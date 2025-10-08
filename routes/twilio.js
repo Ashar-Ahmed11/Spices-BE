@@ -1,8 +1,7 @@
 const express = require('express');
 
 const router = express.Router()
-const accountSid = '';
-const authToken = '';
+
 // const { Rembg } = require("rembg-node");
 // const sharp = require("sharp")
 // const got = require("got");
