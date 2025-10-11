@@ -4,48 +4,50 @@ const Admin = require('../models/admin')
 const Home = require('../models/home')
 const fetchAdmin = require('../middleware/fetchadmin')
 const Category = require('../models/category')
-    // router.post('/createhome', async(req, res) => {
 
-//     try {
-
-//         const admin = await Admin.findOne({ username: 'Suhaib Ahmed' })
-
-//         const data = {
-//             user: admin._id,
-//             mainCarousalImgDesktop: 'https://nukhba.shop/static/media/carousalOne.f198a280.png',
-//             mainCarousalImgPhone: 'https://nukhba.shop/static/media/carousalOneAlter.09d83747.png',
-//             firstHeading: 'Fresh Arrivals',
-//             secondSmallPara: 'A Newly Updated Look',
-//             secondSmallHead: 'Nukhba',
-//             secondSmallParaTwo: 'Now designed for a seamless experience, your daily dose of leather.',
-//             secondSmallParaThree: 'We are getting ready for a "grand gesture" with new products under development and a brand-new definition of lifestyle under creation.',
-//             bodyImg: 'https://nukhba.shop/static/media/bodyCarousal.b78b7f3a.png',
-//             thirdSmallPara: 'Designed for Simplicity',
-//             thirdSmallHead: 'Crafts that age elegantly',
-//             thirdSmallParaTwo: 'Our trademark is a traditional cut presented in a contemporary serving style, created to meet the demands of todays dynamic world.',
-//             fourSmallHead: 'Core Values',
-//             fourSmallPara: 'When Nukhba was established, it had big plans:',
-//             fourSmallParaTwo: 'To successfully enter the local market with goods that most closely match the description of international manufacturing standards while keeping the price cap within the means of the average domestic customer, and this trip has a narrative...',
-//             secondHeading: 'Featured Ones',
-//             footerCarousalImgDesktop: 'https://nukhba.shop/static/media/footerOne.196671c1.png',
-//             footerCarousalImgPhone: 'https://nukhba.shop/static/media/footerOneAlter.e6685d89.png'
-//         }
-
-//         const home = await Home.create(data)
-//         home.save()
-//         res.send(home)
-
-
-//     } catch (error) {
-//         console.error(error.message)
-//         return res.status(500).send("Some Internal Server Error")
-//     }
-// })
-router.post('/createcategory', async(req, res) => {
+router.post('/createhome', async(req, res) => {
 
     try {
 
-        const admin = await Admin.findOne({ username: 'Suhaib Ahmed' })
+        const admin = await Admin.findOne({ username: 'admin@memonfoodsandspices' })
+
+        const data = {
+            user: admin._id,
+            mainCarousalImgDesktop:'https://res.cloudinary.com/dextrzp2q/image/upload/v1678537550/knpz1pszgqkze7iwv3hm.avif',
+          mainCarousalImgPhone: 'https://res.cloudinary.com/dextrzp2q/image/upload/v1677446793/piefl0qw89izkoh300fd.png',
+            firstHeading: 'Fresh Arrivals',
+            secondSmallPara: 'A Newly Updated Look',
+            secondSmallHead: 'Nukhba',
+            secondSmallParaTwo: 'Now designed for a seamless experience, your daily dose of leather.',
+            secondSmallParaThree: 'We are getting ready for a "grand gesture" with new products under development and a brand-new definition of lifestyle under creation.',
+            bodyImg: 'https://res.cloudinary.com/dextrzp2q/image/upload/v1676748951/xyxuzlzsmnyr7mbjse4m.png',
+            thirdSmallPara: 'Designed for Simplicity',
+            thirdSmallHead: 'Crafts that age elegantly',
+            thirdSmallParaTwo: 'Our trademark is a traditional cut presented in a contemporary serving style, created to meet the demands of todays dynamic world.',
+            fourSmallHead: 'Core Values',
+            fourSmallPara: 'When Nukhba was established, it had big plans:',
+            fourSmallParaTwo: 'To successfully enter the local market with goods that most closely match the description of international manufacturing standards while keeping the price cap within the means of the average domestic customer, and this trip has a narrative...',
+            secondHeading: 'Featured Ones',
+            footerCarousalImgDesktop: 'https://res.cloudinary.com/dextrzp2q/image/fetch/f_webp/q_60/https://res.cloudinary.com/dextrzp2q/image/upload/v1676748976/tbgvwfdtgixrwqoj0ldn.png',
+            footerCarousalImgPhone: 'https://res.cloudinary.com/dextrzp2q/image/fetch/f_webp/q_60/https://res.cloudinary.com/dextrzp2q/image/upload/v1676748998/aikg308x1vsartenlm4p.png'
+        }
+
+        const home = await Home.create(data)
+        home.save()
+        res.send(home)
+
+
+    } catch (error) {
+        console.error(error.message)
+        return res.status(500).send("Some Internal Server Error")
+    }
+})
+
+router.post('/createcategory', async (req, res) => {
+
+    try {
+
+        const admin = await Admin.findOne({ username: 'admin@memonfoodsandspices' })
 
         const data = {
             user: admin._id,
@@ -75,33 +77,33 @@ router.post('/createcategory', async(req, res) => {
     }
 })
 
-router.get('/gethome', async(req, res) => {
-    const home = await Home.findById("63f127bd95347c4db240d404")
+router.get('/gethome', async (req, res) => {
+    const home = await Home.findById("68e6e6687155ca4de4fa028f")
     res.send(home)
 })
-router.get('/getcategory/:id', async(req, res) => {
+router.get('/getcategory/:id', async (req, res) => {
     const home = await Category.findById(req.params.id)
     res.send(home)
 })
-router.get('/getcategories', async(req, res) => {
+router.get('/getcategories', async (req, res) => {
     const home = await Category.find()
     res.send(home)
 })
-router.delete('/deletecategory/:id', async(req, res) => {
+router.delete('/deletecategory/:id', async (req, res) => {
 
     try {
-        
-    
-    const result = await Category.findByIdAndRemove(req.params.id)
-    const getCategories = await Category.find()
-    res.send(getCategories)
-} catch (error) {
-    console.error(error.message)
-    return res.status(500).send("Internal Server Error")
-}
+
+
+        const result = await Category.findByIdAndRemove(req.params.id)
+        const getCategories = await Category.find()
+        res.send(getCategories)
+    } catch (error) {
+        console.error(error.message)
+        return res.status(500).send("Internal Server Error")
+    }
 })
 
-router.put('/edithome', fetchAdmin, async(req, res) => {
+router.put('/edithome', fetchAdmin, async (req, res) => {
 
     try {
 
@@ -127,12 +129,12 @@ router.put('/edithome', fetchAdmin, async(req, res) => {
         if (req.body.secondHeading) { newComponent.secondHeading = req.body.secondHeading }
         if (req.body.footerCarousalImgDesktop) { newComponent.footerCarousalImgDesktop = req.body.footerCarousalImgDesktop }
         if (req.body.footerCarousalImgPhone) { newComponent.footerCarousalImgPhone = req.body.footerCarousalImgPhone }
-        const note = await Home.findByIdAndUpdate('63f127bd95347c4db240d404', { $set: newComponent }, { new: true })
+        const note = await Home.findByIdAndUpdate('68e6e6687155ca4de4fa028f', { $set: newComponent }, { new: true })
 
         res.send(note)
-            // const home = await Home.create(data)
-            // home.save()
-            // res.send(home)
+        // const home = await Home.create(data)
+        // home.save()
+        // res.send(home)
 
 
     } catch (error) {
@@ -140,7 +142,7 @@ router.put('/edithome', fetchAdmin, async(req, res) => {
         return res.status(500).send("Some Internal Server Error")
     }
 })
-router.put('/editcategory/:id', fetchAdmin, async(req, res) => {
+router.put('/editcategory/:id', fetchAdmin, async (req, res) => {
 
     try {
 
@@ -165,9 +167,9 @@ router.put('/editcategory/:id', fetchAdmin, async(req, res) => {
         const note = await Category.findByIdAndUpdate(req.params.id, { $set: newComponent }, { new: true })
 
         res.send(note)
-            // const home = await Home.create(data)
-            // home.save()
-            // res.send(home)
+        // const home = await Home.create(data)
+        // home.save()
+        // res.send(home)
 
 
     } catch (error) {
