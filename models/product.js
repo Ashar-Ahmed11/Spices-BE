@@ -13,6 +13,17 @@ const productsSchema = new Schema({
     priceAED: {
         type: 'Number',
     },
+    variants:[
+            {
+                variant:{
+                    type:"String"
+                },
+                price:{
+                    type:"Number"
+                }
+            }
+    ],
+
     description:{
         type:'String'
     },
